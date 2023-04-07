@@ -1,0 +1,25 @@
+%body
+%nav.navbar.navbar-toggleable-sm.navbar-inverse.fixed-top.bg-inverse
+  =render 'search'
+  -if not Electrico::Presupuesto.first.colaborador.present?
+    #nueva_solicitud
+
+  %button.navbar-toggler.navbar-toggler-right.hidden-lg-up{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  -# =  render 'search'
+
+  -#%a.navbar-brand{:href => electrico_presupuestos_path()} Presupuestos
+  #navbarsExampleDefault.collapse.navbar-collapse
+    #notifications= render 'notifications'
+    %ul.navbar-nav.mr-auto
+      -#%li.nav-item.nav-link.active= link_to('<span class="glyphicon glyphicon-home"> Home  </span>'.html_safe, user_path(current_user.id))
+      %li.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"> Todos  </span>'.html_safe, electrico_presupuestos_path)
+      %li.nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"> Cerrar  </span>'.html_safe, destroy_user_session_path, method: 'delete')
+      = render 'filters_main_menu'
+
+    -#=  render 'search'
+
+    -#%form.form-inline.mt-2.mt-md-0
+      %input.form-control.mr-sm-2{:placeholder => "Buscar Presupuesto", :type => "text"}/
+      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Buscar
+

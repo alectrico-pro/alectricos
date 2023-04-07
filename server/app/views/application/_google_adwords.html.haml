@@ -1,0 +1,8 @@
+-if Rails.configuration.domain['propiedad_google_adwords'] and request.remote_ip != Rails.configuration.domain['mi_ip']
+  %script{:async => true, :src => "https://www.googletagmanager.com/gtag/js?id=#{Rails.configuration.domain['propiedad_google_adwords']}"}
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config','#{Rails.configuration.domain['propiedad_google_adwords']}');
+
+

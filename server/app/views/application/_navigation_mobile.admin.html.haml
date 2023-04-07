@@ -1,0 +1,23 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => 'admin'}
+
+
+%nav.navbar.navbar-toggleable-xl.top.bg-light.navbar-light.top{:style => "background-color: #e3f2fd;z-index: 150"}
+  -if user_session["role"] == '1'
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-camera"></span><col-hidden-xs> Evidencias </col-hidden-xs>'.html_safe, gestion_evidencias_path,:id => 'footer_evidencias')
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-education"></span> OTEC'.html_safe, gestion_registros_path,:id => 'footer_registros')
+
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-user"></span> Auditores'.html_safe, gestion_usuarios_path,:id => 'footer_auditores')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-check"></span> Auditorías'.html_safe, gestion_auditorias_path,:id => 'footer_auditorias')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"></span> Criterios'.html_safe, gestion_criterios_path,:id => 'footer_criterios')
+
+
+
+
+
+
+  -#.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span> <span class=hidden-sm-down> Presupuestos </span>'.html_safe,  electrico_presupuestos_path,:id => 'presupuestos')
+  -#iniciar_sesion.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-log-in"></span> <span class=hidden-sm-down> Iniciar sesión </span>'.html_safe, new_user_session_path,:id => 'iniciar_sesion')
+  -#registrarse.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-edit"></span> <span class=hidden-sm-down>Registro</span>'.html_safe, new_user_registration_path,:id => 'registrarse')

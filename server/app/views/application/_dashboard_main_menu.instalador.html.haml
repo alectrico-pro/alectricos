@@ -1,0 +1,26 @@
+%body
+%nav.navbar.navbar-toggleable-sm.navbar-inverse.fixed-top.bg-inverse
+  =render 'search'
+  -#muestra un mono de instalador para indicar que hay una nueva solicitud
+  -if Electrico::Presupuesto.all.sin_colaborador.any?
+    #nueva_solicitud
+
+  %button.navbar-toggler.navbar-toggler-right.hidden-lg-up{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+
+  -#%a.navbar-brand{:href => electrico_presupuestos_path()} Presupuestos
+  -#menu
+  #navbarsExampleDefault.collapse.navbar-collapse
+    #notifications= render 'notifications'
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.nav-link.active= link_to('<span class="glyphicon glyphicon-home"> Home  </span>'.html_safe, user_path(current_user.id))
+      %li.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-plus"> Nuevo  </span>'.html_safe, new_electrico_presupuesto_path)
+      -#i.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"> Todos  </span>'.html_safe, electrico_presupuestos_path)
+      %li.nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"> Cerrar  </span>'.html_safe, destroy_user_session_path, method: 'delete')
+      %button.navbar-toggler.navbar-toggler.hidden-lg-up{"aria-controls" => "navbarsFiltos", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsFiltros", "data-toggle" => "collapse", :type => "button"}
+        %span.glyphicon.glyphicon-option-horizontal
+      -#menu que depende de los parámetors de request
+      #navbarsFiltros.collapse.navbar-collapse
+        %li.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"> Todos  </span>'.html_safe, electrico_presupuestos_path)
+
+        = render 'filters_main_menu'

@@ -1,0 +1,22 @@
+-flash.each do | name, msg |
+  -clase = "alert alert-error alert-dismissible fade show"
+
+  -case name 
+    -when 'alert'
+      -clase = "alert alert-warning alert-dismissible fade.show"
+    -when 'notice'
+      -clase = "alert alert-info alert-dismissible fade show"
+    -when 'warning'
+      -clase = "alert alert-warning alert-dismissible fade show"
+    -when 'error'
+      -clase = "alert alert-warning alert-dismissible fade show"
+
+
+  %div{:role => "alert",:class => "#{clase}"}
+    %button.close{'aria-label' => "Close", 'data-dismiss'=> "alert",:type => "button"}
+      %span{'aria-hidden' => true}x
+    %strong
+    =msg
+-# if alert
+  .alert.alert-warning
+    %p= alert

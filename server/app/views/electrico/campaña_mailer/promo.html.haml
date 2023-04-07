@@ -1,0 +1,48 @@
+!!! Strict
+/ Paste your own code here, or change the existing code to experiment with what works
+/ Feel free to paste the entire HTML of your email
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %script{:type => "application/ld+json"}
+      :cdata
+        [{
+        "@context": "http://schema.org/",
+        "@type": "Organization",
+        
+        \// WARNING: Before sending email, either point the logo
+        \// at your own image or delete the logo annotation.
+        \//
+        \// If showing a logo, we recommend using an https URL.
+        \// It's not a requirement today, but may be in the future.
+        "logo": "https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"
+        },{
+        "@context": "http://schema.org/",
+        "@type": "EmailMessage",
+        
+        \// Use this optional alternative subject line to avoid duplicate text
+        \// between the subject, deal badge, and discount code.
+        "subjectLine": "[Important] Please add subject line in annotation"
+        },{
+        "@context": "http://schema.org/",
+        "@type": "DiscountOffer",
+        
+        \// Describe your discount, this will be shown as a badge (eg "25% off" or "free shipping")
+        "description": "20% off",
+        
+        "discountCode": "PROMO",
+        "availabilityStarts": "2019-11-15T23:07:31-08:00",
+        "availabilityEnds": "2019-11-18T23:07:31-08:00"
+        },{
+        \// Promotion card with single image.
+        \// We recommend using an https URL.  It's not a requirement today, but may be in the future.
+        \// Any image size will work and will just be cropped automatically.
+        \// GIF & WEBP images are not supported and will be filtered out.
+        \// Sample image is 538x138, 3.9 aspect ratio
+        "@context": "http://schema.org/",
+        "@type": "PromotionCard",
+        "image": "https://www.google.com/gmail-for-marketers/promo-tab/markup-tool/sample.png"
+        }]
+  %body
+    %p Email Body
+    %p Line 2

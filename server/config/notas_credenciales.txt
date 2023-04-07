@@ -1,0 +1,6 @@
+https://medium.com/@thorntonbrenden/rails-and-the-legendary-master-key-15c8be7799f1
+Rails.application.credentials.secret_key_base
+Esta credencial se usa para encryptar
+
+
+

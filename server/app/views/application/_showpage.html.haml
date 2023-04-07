@@ -1,0 +1,53 @@
+:javascript
+  var myVar;
+  function myFunction() {
+    //Lo tuve que desactivar porque consume mucha memoria
+   // myVar = setTimeout(showPage, 3000);
+  }
+
+  function callback() {
+    //alert( " #{current_user_confirmed? ? 'Usuario confirmado' : 'Usuario No confirmado'} ");
+    //r xhr=getXHR();xhr.open("GET",location,!0);
+   //onsole.log(arguments);
+  }
+
+  function showPage() {
+  var html,res;
+  //document.getElementById("loader").style.display = "none"; activar para parar al loader
+  //#etTimeout(showPage, 10000);
+  $.ajax({ url: "/electrico/presupuestos/0/user", type: "GET", dataType: "json",callBack: callback() }).done(function(responseText) {
+  response = arguments;
+  //nsole.log(responseText[0].confirmed);
+  if (responseText[0].confirmed == 'Email confirmado') {
+    console.log("Confirmado");
+    jQuery("#pause").replaceWith( jQuery.parseHTML('<span id="pause" style="color:orange" class="glyphicon glyphicon-play"></span> '))
+    jQuery("#once").replaceWith ( jQuery.parseHTML( ''))
+    jQuery("#volatil").replaceWith ( jQuery.parseHTML( ''))
+
+    jQuery("#notifications").replaceWith ( jQuery.parseHTML( '<div id="once" class="alert alert-warning">' + 'Siga las instrucciones de cada etapa y cuando esté listo presione '+ '<span id="pause" style="color:orange" class="glyphicon glyphicon-play"></span> para avanzar.' + "</div>"))
+
+    jQuery("#status").replaceWith( jQuery.parseHTML( "<div id='status'>" + "" + "</div>" )) 
+    
+  } else {
+    console.log("No confirmado");
+    setTimeout(showPage, 3000);
+  };
+
+  //self.html( selector ?
+  //  jQuery("<div>").append( jQuery.parseHTML( responseText )).find(selector) :
+    // responseText);
+    responseText;
+  }).always( callback && function( jqHR, status) {
+    // self.each( function() {
+    //   callback.apply( this, response || [ jqXHR.responseText, status, jqXHR ]);
+    // } );
+   } );
+  }
+
+-#:javascript
+  Holder.addTheme('gray', {
+  bg: '#777',
+  fg: 'rgba(255,255,255,.75)',
+  font: 'Helvetica',
+  fontweight: 'normal'
+  })

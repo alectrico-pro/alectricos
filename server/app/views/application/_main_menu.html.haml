@@ -1,0 +1,9 @@
+.container
+  %h3.text-muted Autorizados
+  %nav.navbar.navbar-light.bg-faded.rounded.mb-3
+    %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-toggleable-md
+      %ul.nav.navbar-nav.text-md-center.justify-content-md-between
+        = render 'nav_izquierda'
+

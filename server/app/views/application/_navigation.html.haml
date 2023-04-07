@@ -1,0 +1,67 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => ''}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => ''}
+
+
+
+
+%nav.navbar.navbar-toggleable-sm.navbar-inverse.bg-faded
+  -#ails.configuration.domain['focus']
+  -#=current_user.email if current_user
+
+  -if current_user
+    -if current_user.ingeniero
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-bookmark"></span> Atenciones'.html_safe,atenciones_path,:id => 'atenciones')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-th"></span> Tipo de Auditorías'.html_safe,tipo_auditorias_path,:id => 'tipo_auditorias')
+
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span> Presupuestos'.html_safe,  electrico_presupuestos_path,:id => 'presupuestos')
+
+
+    -elsif current_user.admin
+      -if user_session["role"] == '1'
+        .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-camera"></span><col-hidden-xs> Evidencias </col-hidden-xs>'.html_safe, gestion_evidencias_path,:id => 'evidencias')
+        .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-education"></span> OTEC'.html_safe, gestion_registros_path,:id => 'registros')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-user"></span> Auditores'.html_safe, gestion_usuarios_path,:id => 'auditores')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-check"></span> Auditorías'.html_safe, gestion_auditorias_path,:id => 'auditorias')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"></span> Criterios'.html_safe, gestion_criterios_path,:id => 'criterios')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-th-list"></span> Criterios'.html_safe, electrico_checklists_path,:id => 'checklists')
+
+
+    -elsif current_user.auditor
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-camera"></span><col-hidden-xs> Evidencias </col-hidden-xs>'.html_safe, gestion_evidencias_path,:id => 'evidencias')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-check"></span> Auditorías'.html_safe, gestion_auditorias_path,:id => 'auditorias')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-th-list"></span> Criterios'.html_safe, electrico_checklists_path,:id => 'checklists')
+
+
+
+  - else
+    -#.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-home"></span> Home'.html_safe, root_path)
+    -#.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-phone-alt"></span> Contacto'.html_safe, contacto_path)
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-info-sign"></span> Sitio'.html_safe, about_path,:id => 'sitio')
+    -#av-item
+      %a.nav-link{:href => new_evento_path,:id => 'new_evento'}
+        .glyphicon.glyphicon-plus{:style => "font-size: 0.5rem"}
+        %span.glyphicon.glyphicon-map-marker Agendar Visita
+
+
+  - if current_user 
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span> Presupuestos'.html_safe,  electrico_presupuestos_path,:id => 'presupuestos')
+
+    .nav-item
+      -unless current_user.admin or current_user.ingeniero or current_user.auditor
+        %a.nav-link{:href => eventos_path,:id => 'eventos'}
+          %span.glyphicon.glyphicon-map-marker Visitas
+    .nav-item
+    -#unless current_user.admin or current_user.ingeniero or current_user.auditor
+      %a.nav-link{:href => new_evento_path,:id => 'new_evento'}
+        .glyphicon.glyphicon-plus{:style => "font-size: 0.5rem"}
+        %span.glyphicon.glyphicon-map-marker Agendar Visita
+        
+
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-cog"></span> Perfil'.html_safe, edit_user_registration_path,:id => 'editar_registro')
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-off"></span> Cerrar sesión'.html_safe, destroy_user_session_path, method: 'delete',:id => 'cerrar_sesion')
+
+  - else
+    #iniciar_sesion.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-log-in"></span> Iniciar sesión'.html_safe, new_user_session_path,:id => 'iniciar_sesion')
+    #registrarse.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-edit"></span> Registro'.html_safe, new_user_registration_path,:id => 'registrarse')

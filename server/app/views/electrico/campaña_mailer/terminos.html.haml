@@ -1,0 +1,28 @@
+-#content_for :logo   do
+  = image_tag('/img/LocoConduit.png', :class => "img.em_w150" , :alt => "logo alectrico", :border => "0", :height => "41", :style => "display:block; font-family:Arial, sans-serif; font-size:18px; line-height:25px; text-align:center; color:#1d4685; font-weight:bold; max-width:208px;", :width => "208")
+
+-content_for :hero_imagen do
+  %td{:align => "center", :valign => "top"}
+    = image_tag('/img/providencia.jpg', :alt => "Un Cliente de Aléctrico Requiere Sus Servicios", :border => "0", :height => "auto", :style => "display:block; max-width:480px; font-family:Arial, sans-serif; font-size:17px; line-height:20px; color:#000000; font-weight:bold;", :width => "480")
+
+-content_for :nombre_informe do
+  %td.em_blue.em_font_22{:align => "center", :style => "font-family: Arial, sans-serif; font-size: 26px; line-height: 29px; color:#264780; font-weight:bold;", :valign => "top"}
+    = "Más Información"
+
+-content_for :call_to_action do
+  %td.em_white{:align => "center", :height => "42", :style => "font-family: Arial, sans-serif; font-size: 16px; color:#ffffff; font-weight:bold; height:42px;", :valign => "middle"}
+    %a{:href => "https://shop.alectrico.cl/recarga", :style => "text-decoration:none; color:#ffffff; line-height:42px; display:block;", :target => "_blank"} Crédito de Atención
+
+-content_for :terminos do
+  = Fatty::Formatter::Termino.render(:text) 
+
+Hola #{@user.nombre_fantasia}, Ud. ha solicitado más información sobre alectrico.cl y estamos encantados de dársela a conocer. 
+
+alectrico.cl, sin mayúsculas ni tildes, es una aplicación web como muchas otras, con una función muy precisa, permite que Ud. en su calidad de Instalador Eléctrico Autorizado pueda atender a las personas en sus domicilios.
+
+Como Ud. comprenderá, atender a alguien en su propia casa es un asunto muy delicado y por eso es que lo hemos invitado a Ud. que sabe hacer trabajos eléctricos que no representen riesgos a las personas ni a la propiedad.
+
+Estamos dispuestos a confiar en Ud. pero igual comprobaremos su trabajo las veces que nos parezca. Y hacemos esto para proteger a las personas, además de lo que Ud. también haga para protegerlas. Eso es todo. El resto son los términos de atención de alectrico.cl.
+
+Alexander Espinosa
+CEO alectrico.cl

@@ -1,0 +1,76 @@
+%p#notice= notice
+
+%p
+  %b Rut:
+  = @autorizado.rut
+
+%p
+  %b Nombre:
+  = @autorizado.nombre
+%p
+  %b Nombre Completo:
+  = @autorizado.nombre_completo
+
+
+%p
+  %b Direccion:
+  = @autorizado.direccion
+
+%p
+  %b Comuna:
+  = @autorizado.comuna
+
+%p
+  %b Fono:
+  = @autorizado.fono
+
+%p
+  %b Llamadas Telefónicas:
+  = @autorizado.llamadas_telefonicas
+
+%p
+  %b Clase:
+  = @autorizado.clase.to_s.upcase
+
+%p
+  %b Email:
+  = @autorizado.email
+
+%p
+  %b Envíos de Email:
+  = @autorizado.envios_de_email
+
+%p
+  %b Suscripcion:
+  = @autorizado.suscripcion
+
+%p
+  %b Presentacion:
+  = @autorizado.presentacion
+
+%p
+  %b Pedido Adicional de Información:
+  = @autorizado.pedido_adicional_de_informacion
+
+%p
+  %b Interes:
+  = @autorizado.interes
+
+%p
+  %b Wapp:
+  = @autorizado.wapp
+
+
+%p
+  %b Reclutamiento:
+  = @autorizado.reclutamiento
+
+
+= link_to "Desuscribirme", desuscribeme_electrico_desuscripcion_path(@autorizado)
+\|
+= link_to "Editar", edit_autorizado_path(@autorizado)
+\|
+= link_to 'Lista', autorizados_path
+
+
+

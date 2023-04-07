@@ -1,0 +1,37 @@
+-content_for(:meta) do
+  %meta{:property => "menu", :content => 'menu_footer'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => ''}
+
+-##
+  -#no usar navbar-fixed-top porque afecta el control inline  de search
+  -#=link_to Gestion, root_path, class: 'navbar-brand'
+
+  -#av-item
+    %a.nav-link{:href => gestion_evidencias_path}
+      %span.glyphicon.glyphicon-camera
+
+  -#.nav-item
+    %a.nav-link{:href => gestion_evidencias_path}
+      %span.glyphicon.glyphicon-camera
+  -#.nav-item
+    %a.nav-link{:href => gestion_evidencias_path}
+      %span.glyphicon.glyphicon-camera
+  -#= render 'search'
+  -#%button.navbar-toggler.navbar-toggler-right{"data-target" => "#search", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+
+-#ink_to Gestion, root_path, class: 'navbar-brand'
+
+-#menu-mobile-collapse.collapse.navbar-collapse
+-#= render 'navigation_mobile'
+
+-#=render 'navigation_mobile'
+#menu-footer
+  -#.collapse.navbar-collapse
+  = render 'navigation_on_footer'
+-#size_font_comando=5
+-#onclick = true
+
+-#render partial: 'shared/electrico/menu_servicios_front', :locals => {:presupuesto => Electrico::Presupuesto.new}
+

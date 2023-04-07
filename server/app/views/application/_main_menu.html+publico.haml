@@ -1,0 +1,62 @@
+-content_for(:meta) do
+  %meta{:property => "main_menu", :content => 'main_menu'}
+  %meta{:property => "main_menu.variant", :content => '+publico'}
+  %meta{:property => "locale", :content => ''}
+
+
+.container
+  .masthead
+    %h3.text-muted Alectrico
+    %h3
+    %nav.navbar.navbar-light.bg-faded.rounded.mb-3
+      %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+        -#.nav.navbar-item
+          =link_to image_tag( Rails.configuration.domain['jumbotron_heading'],:style => "height: 2.8rem"), "#top", class: 'd-inline-bloc align-top' ,:alt => "Instalador Autorizado",:title => "Instalador Autorizado", "media-simple" => "true"
+      #navbarCollapse.collapse.navbar-toggleable-md
+        %ul.nav.navbar-nav.text-md-center.justify-content-md-between
+          %li.nav-item.active
+            %a.nav-link{:href => "#"}
+              Home
+              %span.sr-only (current)
+          %li.nav-item
+            %a.nav-link{:href => "#"} Projects
+          %li.nav-item
+            %a.nav-link{:href => "#"} Services
+          %li.nav-item
+            %a.nav-link{:href => "#"} Downloads
+          %li.nav-item
+            %a.nav-link{:href => "#"} About
+          %li.nav-item.dropdown
+            %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Dropdown
+            .dropdown-menu{"aria-labelledby" => "dropdown01"}
+              %a.dropdown-item{:href => "#"} Action
+              %a.dropdown-item{:href => "#"} Another action
+              %a.dropdown-item{:href => "#"} Something else here
+  / Jumbotron
+  .jumbotron
+    %h1 Alectrico
+    %p.lead Atenciones eléctricas a domicilio en Providencia
+    %p
+      %a.btn.btn-lg.btn-success{:href => agendar_path, :role => "button"} Agende Hoy
+  / Example row of columns
+  .row
+    .col-lg-4
+      %h2 Sergio Hernández
+      %p Alexander es un excelente profesional, altamente confiable. Nos ayudó a solventar un problema de emergencia en nuestro departamento, logrando detectar la causa raíz. Además nos explicó las medidas de seguridad y prevención que deben tomarse con los sistemas eléctricos. 1000% recomendado!!!. Gracias Alexander.
+      %p
+        %a.btn.btn-primary{:href => "https://www.google.com/maps/contrib/107333398694660156508/place/ChIJx3fB79TDYpYRchY88dfnkT8/@-33.436726,-70.6175145,14z/data=!4m6!1m5!8m4!1e1!2s107333398694660156508!3m1!1e1", :role => "button"} Ver Más
+    .col-lg-4
+      %h2 Belén H. Puebla
+      %p Alexander lleva a cabo su servicio de manera responsable, eficiente y cercana. No solo solucionó oportunamente mi emergencia, sino que me instruyó en medidas basales para tener un mayor control sobre la energía eléctrica en el hogar. Esa experiencia me motivó a contratar sus servicios nuevamente para la instalación de luminarias deco, las cuales hoy lucen hermosas y han impregnado de un nuevo concepto de decoración segura para mi casa y mi familia.
+      %p
+        %a.btn.btn-primary{:href => "https://www.google.com/maps/contrib/115993324348869694763/reviews/@-33.4209179,-70.604516,17z/data=!3m1!4b1!4m3!8m2!3m1!1e1", :role => "button"} Ver Más
+    .col-lg-4
+      %h2 Alectrico Designer
+      %p  Alectrico ofrece un diseñador online de circuitos, extremadamente fácil de usar que le permitirá investigar si su instalación eléctrica se ha quedado pequeña. Además puede solicitar un perfil energético a Alectrico usando los datos que ingrese en Designer.
+      %p
+        %a.btn.btn-primary{:href => "https://designer.alectrico.cl", :role => "button"} Ver Más 
+  / Site footer
+  %footer.footer
+    %p © Alectrico 2020
+

@@ -1,0 +1,62 @@
+-content_for(:meta) do
+  %meta{:property => "main_menu", :content => 'menu_bienvenida'}
+  %meta{:property => "main_menu.variant", :content => ''}
+  %meta{:property => "locale", :content => ''}
+
+
+%body
+%p menu bienvenida
+= render 'navigation_mobile'
+-#.container
+  .masthead
+    -#%h3.text-muted Project name
+    %nav.navbar.navbar-light.bg-faded.rounded.mb-3
+      %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarCollapse.collapse.navbar-toggleable-md
+        %ul.nav.navbar-nav.text-md-center.justify-content-md-between
+          %li.nav-item.active
+            %a.nav-link{:href => "#"}
+              Home
+              %span.sr-only (current)
+          %li.nav-item
+            %a.nav-link{:href => "#"} Projects
+          %li.nav-item
+            %a.nav-link{:href => "#"} Services
+          %li.nav-item
+            %a.nav-link{:href => "#"} Downloads
+          %li.nav-item
+            %a.nav-link{:href => "#"} About
+          %li.nav-item.dropdown
+            %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Dropdown
+            .dropdown-menu{"aria-labelledby" => "dropdown01"}
+              %a.dropdown-item{:href => "#"} Action
+              %a.dropdown-item{:href => "#"} Another action
+              %a.dropdown-item{:href => "#"} Something else here
+  / Jumbotron
+  -#.jumbotron
+    %h1 Marketing stuff!
+    %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.
+    %p
+      %a.btn.btn-lg.btn-success{:href => "#", :role => "button"} Get started today
+  / Example row of columns
+  -#.row
+    .col-lg-4
+      %h2 Heading
+      %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      %p
+        %a.btn.btn-primary{:href => "#", :role => "button"} View details »
+    .col-lg-4
+      %h2 Heading
+      %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      %p
+        %a.btn.btn-primary{:href => "#", :role => "button"} View details »
+    .col-lg-4
+      %h2 Heading
+      %p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
+      %p
+        %a.btn.btn-primary{:href => "#", :role => "button"} View details »
+  / Site footer
+  -#%footer.footer
+    %p © Company 2017
+

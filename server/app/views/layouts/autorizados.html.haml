@@ -1,0 +1,9 @@
+-content_for :contenido do
+  #panel
+    .container
+      = render 'panel'
+  .container
+    = render 'notifications'
+    = yield
+
+= render template: '/layouts/application'

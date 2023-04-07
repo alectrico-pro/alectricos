@@ -1,0 +1,13 @@
+#encoding: ISO-8859-1
+Hola <%=@user.nombre %>, Ud. ha solicitado más información sobre alectrico.cl y estamos encantados de dársela a conocer. alectrico.cl, sin mayúsculas ni tildes, es una aplicación web como muchas otras, con una función muy precisa, permite que Ud. en su calidad de Instalador Eléctrico Autorizado pueda atender a las personas en sus domicilios. Como Ud. comprenderá, atender a alguien en su propia casa es un asunto muy delicado y por eso es que lo hemos invitado a Ud. que sabe hacer trabajos eléctricos que no representen riesgos a las personas ni a la propiedad. Estamos dispuestos a confiar en Ud. pero igual comprobaremos su trabajo las veces que nos parezca. Y hacemos esto para proteger a las personas, además de lo que Ud. también haga para protegerlas. Eso es todo. 
+
+Alexander Espinosa 
+CEO alectrico.cl
+
+
+<%= Fatty::Formatter::Masinfo.render(:text) %>
+
+Si no quiere recibir más información de alectrico.cl copie este link 
+<%=desuscribeme_electrico_desuscripcion_url(@user.desuscripcion_token) %> 
+en el área de direcciones de su navegador web y después presione retorno.
+

@@ -1,0 +1,9 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => 'on_footer'}
+  %meta{:property => "navigation_on_footer.variant", :content => ''}
+  %meta{:property => "navigation_on_footer.locale", :content => 'colaborador'}
+
+
+%nav.navbar.navbar-toggleable-sm.navbar-inverse.bg-faded
+  .nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"></span>'.html_safe, destroy_user_session_path, method: 'delete',:id => 'cerrar_sesion')
+

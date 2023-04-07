@@ -1,0 +1,17 @@
+%li.nav-item
+  %a.nav.item{:href => new_autorizado_path} Nuevo
+
+%li.nav-item
+  %a.nav-link{:href => "autorizados"}
+    Seleccione un filtro
+    %span.sr-only (current)
+
+-Autorizado.get_filtros.each do |f|
+  %li.nav-item
+    %a.nav.item{:href=> "?#{f}=true"} #{f}
+
+
+
+
+
+

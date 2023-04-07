@@ -1,0 +1,43 @@
+-content_for(:meta) do
+  %meta{:property => "super_menu.variant", :content => '+trastienda'}
+
+%body
+%nav.navbar.navbar-toggleable-xl.navbar-dark.fixed-top.bg-light{:style => "background-color: #e3f2fd;"}
+  %button.navbar-toggler.navbar-toggler-right{:type => "button", "data-toggle" => "collapse", "data-target" => "#navbarSupportedContent" }
+    %span.navbar-toggle-icon
+  .navbar-brand
+    .d-inline-block.align-top
+      =link_to image_tag( Rails.configuration.domain['jumbotron_heading'],:style => "height: 2.8rem"), "#top", class: 'd-inline-bloc align-top' ,:alt => "Instalador Autorizado",:title => "Instalador Autorizado", "media-simple" => "true"
+
+
+  =render 'search'
+  -if Electrico::Presupuesto.count > 0 and not Electrico::Presupuesto.first.colaborador.present?
+    #nueva_solicitud
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-cog"></span> <span class=hidden-sm-down> Perfil </span>'.html_safe, edit_user_registration_path,:id => 'footer_editar_registro')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-off"></span> <span class= hidden-sm-down> Cerrar sesión </span>'.html_safe, destroy_user_session_path, method: 'delete',:id => 'footer_cerrar_sesion')
+
+  -#%button.navbar-toggler.navbar-toggler-right.hidden-lg-up{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+    -#%span.navbar-toggler-icon
+    -#= render 'search'
+
+  -#%a.navbar-brand{:href => electrico_presupuestos_path()} Presupuestos
+  -##navbarsExampleDefault.collapse.navbar-collapse
+    #notifications= render 'notifications'
+    %ul.navbar-nav.mr-auto
+      -#%li.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-log-in"></span> <span class=hidden-sm-down> Iniciar sesión </span>'.html_safe, new_user_session_path,:id => 'iniciar_sesion')
+      -#%li.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-edit"></span> <span class=hidden-sm-down>Registro</span>'.html_safe, new_user_registration_path,:id => 'registrarse')
+
+
+      -#%li.nav-item.nav-link.active= link_to('<span class="glyphicon glyphicon-home"> Home  </span>'.html_safe, user_path(current_user.id))
+      -#%li.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"> Todos  </span>'.html_safe, electrico_presupuestos_path)
+      -#%li.nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"> Cerrar  </span>'.html_safe, destroy_user_session_path, method: 'delete')
+      -#= render 'filters_main_menu'
+
+
+
+    -#=  render 'search'
+
+    %form.form-inline.mt-2.mt-md-0
+      %input.form-control.mr-sm-2{:placeholder => "Buscar Presupuesto", :type => "text"}/
+      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Buscar
+

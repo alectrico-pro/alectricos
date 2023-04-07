@@ -1,0 +1,28 @@
+marketing_pack_alectrico: &marketing_pack_alectricos
+
+  default_from: 'ventas@alectrico.cl'
+  domain:       'alectrica.cl'
+  subdomain:    'alectricos'
+
+#se usa para cucumbear alectrico suponiendo cero datos en base de datos
+test: #anteriormente test, pero debi usar test para gestion
+  <<: *marketing_pack_alectricos
+  name:         alectricos.example.com #estuvo un tiempo bien con //alectrico.com hasta que
+  name_https:   https://www.example.com
+  name_http:    http://www.example.com
+
+production:
+  <<: *marketing_pack_alectricos
+  name:         alectricos.cl
+  name_https:   https://alectricos.cl
+  name_http:    http://alectricos.cl
+  
+
+development:
+  <<: *marketing_pack_alectricos
+  name:         alectricos.127.0.0.1
+  name_https:   http://alectricos.127.0.0.1
+  name_http:    http://alectricos.127.0.0.1
+
+
+

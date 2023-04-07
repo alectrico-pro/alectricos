@@ -1,0 +1,12 @@
+Descripción:
+    Sidebar
+    Genera un menu para las vistas de tipo offcanvas, el que se esconde y aparece a conveniencia para ver en celular
+    Se debe usar para los controladores y vistas que han sido arreglados para ello, también debe usarse el layout show.html.haml app/views/layout/gestion/show.html.haml
+    Se ocupa el template show.html.haml en app/lib/templates/haml/show.html.hml
+    El controlador debe generarse en lib/template/rails/scaffold_controller/controller.rb, ya que este define al menos el método downloadpdf que ocupa en el sidebar.
+
+Example:
+    rails generate sidebar gestion/clase
+
+    Este generador creará
+        app/views/gestion/clase/sidebar.html.haml

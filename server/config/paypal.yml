@@ -1,0 +1,51 @@
+test: &default
+
+  # Credentials for REST APIs
+  client_id: AS9wWGTNrPgwonsoaSgJvIrX7GOIaprnI22YnMYNVRzs9Rri93INvicSwgrPz_yVFhIlLVeEOb1R-d44
+
+  client_secret: EFVM4E65iTbGE5PfpPqwk3v_8CmsP4a1CvQmJiMGO8k67M44EIThG7k7WPNA03AiQJScgtZDAnz4NZxZ  
+  # Mode can be 'live' or 'sandbox'
+  mode: sandbox
+
+  # Credentials for Classic APIs
+  app_id:   myLiveApp
+  username: alexander.espinosa.hernandez-facilitator_api1.gmail.com
+  password: 1364108605
+  signature: Asq3Pvy7SIZmHjhX2ER095eOzsrUAQsZBHrDCcLKEIsAvrfP7XzoNgRV
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  sandbox_email_address: alexander.espinosa.hernandez-facilitator@gmail.com
+  # # IP Address
+  # ip_address: 127.0.0.1
+  # # HTTP Proxy
+  # http_proxy: http://proxy-ipaddress:3129/
+
+development:
+  <<: *default
+
+ci:
+  <<: *default
+
+production, aelectico:
+  <<: *default
+  mode: live
+
+
+
+electrico_heroku:
+  <<: *default
+  mode: <%= ENV["PAYPAL_MODE"] %>
+  client_id: <%= ENV["PAYPAL_CLIENT_ID"] ? ENV["PAYPAL_CLIENT_ID"] : "AUjFABDQCM80SP26q1MisOgrGNfjYLD37CmXDyLHBC8u1PsLeIWQmXPDv6fh" %>
+  client_secret: <%= ENV["PAYPAL_CLIENT_SECRET"] ? ENV["PAYPAL_CLIENT_SECRET"] : "EKAX7hCqa90mIUIklKe4uDp5DyZtJp7CtR-Ld9yhE6FybT1c-7aHv7-9UigG" %>
+
+
+alectrico_heroku:
+  <<: *default
+  #lient_id: AUjFABDQCM80SP26q1MisOgrGNfjYLD37CmXDyLHBC8u1PsLeIWQmXPDv6fh
+  client_secret: EKAX7hCqa90mIUIklKe4uDp5DyZtJp7CtR-Ld9yhE6FybT1c-7aHv7-9UigG
+  #mode: live
+  #ode: sandbox
+  mode: <%= ENV["PAYPAL_MODE"] %>
+  client_id: <%= ENV["PAYPAL_CLIENT_ID"] ? ENV["PAYPAL_CLIENT_ID"] : "AUjFABDQCM80SP26q1MisOgrGNfjYLD37CmXDyLHBC8u1PsLeIWQmXPDv6fh" %>
+  client_secret: <%= ENV["PAYPAL_CLIENT_SECRET"] ? ENV["PAYPAL_CLIENT_SECRET"] : "EKAX7hCqa90mIUIklKe4uDp5DyZtJp7CtR-Ld9yhE6FybT1c-7aHv7-9UigG" %>
+

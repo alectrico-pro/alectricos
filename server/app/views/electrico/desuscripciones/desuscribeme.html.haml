@@ -1,0 +1,44 @@
+%body
+  .wrapper
+    .response.container
+      .content
+        - if @result
+          .icon
+            %img{:src => asset_path("#{@result[:icon]}.svg") ,:alt => ""}
+          %h1= @result[:header]
+          %section
+            %p= @result[:message]
+        -if @autorizado.present?
+          %section
+            %p No recibirá avisos de trabajo, ni información de Aléctrico!
+          %section
+            %a.button.primary.back{:href => "#{Rails.configuration.domain['external_home']}/#{electrico_presupuestos_path}"}
+              %span Ir a alectrico.cl
+
+  %aside.drawer.dark
+    %header
+      .content.compact
+        .braintree{:href => "https://shop.alectrico.cl/recargar", :target => "_blank"} Recargar una Chelita
+        %h3 Detalle de la Transacción
+    %article.content.compact
+      -if @autorizado
+        %section
+          %h5 Datos del Instalador
+          %table{:cellpadding => "0", :cellspacing => "0"}
+            %tbody
+              %tr
+                %th nombre
+                %td= @autorizado.nombre
+              %tr
+                %th email
+                %td= @autorizado.email
+              %tr
+                %th fono
+                %td= @autorizado.fono
+              %tr
+                %th dirección
+                %td= @autorizado.direccion
+              %tr
+                %th clase
+                %td= @autorizado.clase
+

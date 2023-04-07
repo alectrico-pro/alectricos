@@ -1,0 +1,174 @@
+%tr
+  %td.em_h10{:height => "15", :style => "height:15px; font-size:1px; line-height:1px;"}  
+%tr
+  %td.em_aside10{:align => "center", :style => "padding:0 50px; background-color:#ffffff;", :valign => "top"}
+    %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td.em_h10{:height => "35", :style => "height:35px;"}  
+      %tr
+        %td.em_grey{:align => "center", :style => "font-family: Arial, sans-serif; font-size: 18px; line-height: 22px; color:#434343; font-weight:bold;", :valign => "top"} IMPORTANTE:
+      %tr
+        %td{:height => "10", :style => "height:10px; font-size:1px; line-height:1px;"}  
+      %tr
+        %td.em_grey{:align => "center", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; color:#434343;", :valign => "top"}
+          -#= yield :terminos if content_for :terminos
+          -#= Fatty::Formatter::Termino.render(:haml) unless content_for :terminos
+
+          Un Crédito de Atención sirve para ser Canjeado por:
+          %br/
+          %p= "----------   UN DATO DE CONTACTO -------------"
+          %br/
+      -#@payment.transactions.first.item_list.items.each do |item|
+        %tr
+          %td{:height => "20", :style => "height:20px; font-size:1px; line-height:1px;"}  
+        %tr
+          -#%td{:bgcolor => "#efefef", :height => "1", :style => "height:1px; background-color:#efefef; font-size:0px; line-height:0px;"}
+            %img{:alt => "", :border => "0", :height => "1", :src => "/assets/pilot/images/templates/spacer.gif", :style => "display:block;", :width => "1"}/
+        %tr
+          %td.em_h20{:height => "25", :style => "height:25px; font-size:1px; line-height:1px;"}  
+        %tr
+          %td{:align => "center", :valign => "top"}
+            %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:valign => "top"}
+                  %table.em_wrapper{:align => "left", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:120px;", :width => "120"}
+                    %tr
+                      %td{:align => "center", :valign => "top"}
+                        -# servicio = ::Comercio::Servicio.where('tempfile is not null').first
+                        - servicio = ::Comercio::Servicio.find_by(:id => item.sku)
+                        = image_tag("/servicios/#{servicio.id}/code_image",:alt => "#{item.sku}", :border => "0", :height => "120", :style => "display:block; max-width:120px; font-family:Arial, sans-serif; font-size:17px; line-height:20px; color:#000000; font-weight:bold;", :width => "120")
+                  %table.em_hide{:align => "left", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:25px;", :width => "25"}
+                    %tr
+                      %td.em_hide{:align => "left", :style => "width:25px;", :valign => "top", :width => "25"}  
+                  %table.em_wrapper{:align => "left", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:405px;", :width => "405"}
+                    %tr
+                      %td{:height => "16", :style => "height:16px; font-size:1px; line-height:1px;"}  
+                    %tr
+                      %td.em_grey{:align => "left", :style => "font-family: Arial, sans-serif; font-size: 18px; line-height: 22px; color:#434343; font-weight:bold;", :valign => "top"}=item.name
+                    %tr
+                      %td{:height => "13", :style => "height:13px; font-size:1px; line-height:1px;"}  
+                    %tr
+                      %td.em_grey{:align => "left", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343;", :valign => "top"}
+                        Cantidad:
+                        %span{:style => "color:#da885b; font-weight:bold;"}= 1
+                    %tr
+                      %td{:height => "13", :style => "height:13px; font-size:1px; line-height:1px;"}  
+                    %tr
+                      %td.em_grey{:align => "left", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343;", :valign => "top"}
+                        Precio (US $):
+                        %span{:style => "color:#da885b; font-weight:bold;"}=item.price
+        %tr
+          %td.em_h20{:height => "25", :style => "height:25px; font-size:1px; line-height:1px;"}  
+        -#%tr
+          %td{:bgcolor => "#efefef", :height => "1", :style => "height:1px; background-color:#efefef; font-size:0px; line-height:0px;"}
+            %img{:alt => "", :border => "0", :height => "1", :src => "/assets/pilot/images/templates/spacer.gif", :style => "display:block;", :width => "1"}/
+      %tr
+        %td.em_h20{:height => "21", :style => "height:21px; font-size:1px; line-height:1px;"}  
+      %tr
+        %td{:align => "right", :style => "padding-bottom:5px;", :valign => "top"}
+          %table{:align => "right", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td  
+              %td.em_grey{:align => "right", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343; width:100px;", :valign => "top", :width => "100"}
+              %td{:style => "width:20px; font-size:0px; line-height:0px;", :width => "20"}
+              %td.em_grey{:align => "right", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343; width:100px;", :valign => "top", :width => "100"}
+      %tr
+        %td{:align => "right", :style => "padding-bottom:10px;", :valign => "top"}
+          %table{:align => "right", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td  
+              %td.em_grey{:align => "right", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343; width:100px;", :valign => "top", :width => "100"} 
+              %td{:style => "width:20px; font-size:0px; line-height:0px;", :width => "20"}
+              %td.em_grey{:align => "right", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343; width:100px;", :valign => "top", :width => "100"} 
+      %tr
+        %td{:align => "right", :valign => "top"}
+          %table{:align => "right", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %td  
+              %td.em_grey{:align => "right", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343; width:100px; font-weight:bold;", :valign => "top", :width => "100"}
+                -# Total (US $):
+              %td{:style => "width:20px; font-size:0px; line-height:0px;", :width => "20"}
+              %td.em_grey{:align => "right", :style => "font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; color:#434343; width:100px; font-weight:bold;", :valign => "top", :width => "100"}
+                -#@payment.transactions.first.amount.total
+      %tr
+        %td.em_h10{:height => "36", :style => "height:36px;"}  
+
+%table.em_full_wrap{:align => "center", :bgcolor => "#efefef", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+%tr
+%td{:align => "center", :valign => "top"}
+%table.em_main_table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:650px; table-layout:fixed;", :width => "650"}
+%tr
+  %td.em_aside10{:align => "center", :style => "padding:0 25px;", :valign => "top"}
+    %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td.em_h20{:height => "40", :style => "height:40px;"}  
+      %tr
+        %td{:align => "center", :valign => "top"}
+          -#able{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+            %tr
+              %td{:align => "center", :style => "width:30px;", :valign => "middle", :width => "30"}
+                %a{:href => "#", :style => "text-decoration:none;", :target => "_blank"}
+                  %img{:alt => "Fb", :border => "0", :height => "30", :src => "/assets/pilot/images/templates/fb.png", :style => "display:block; font-family:Arial, sans-serif; font-size:18px; line-height:25px; text-align:center; color:#000000; font-weight:bold; max-width:30px;", :width => "30"}/
+              %td{:style => "width:12px;", :width => "12"}  
+              %td{:align => "center", :style => "width:30px;", :valign => "middle", :width => "30"}
+                %a{:href => "#", :style => "text-decoration:none;", :target => "_blank"}
+                  %img{:alt => "Tw", :border => "0", :height => "30", :src => "/assets/pilot/images/templates/tw.png", :style => "display:block; font-family:Arial, sans-serif; font-size:14px; line-height:25px; text-align:center; color:#000000; font-weight:bold; max-width:30px;", :width => "30"}/
+              %td{:style => "width:12px;", :width => "12"}  
+              %td{:align => "center", :style => "width:30px;", :valign => "middle", :width => "30"}
+                %a{:href => "#", :style => "text-decoration:none;", :target => "_blank"}
+                  %img{:alt => "Insta", :border => "0", :height => "30", :src => "/assets/pilot/images/templates/insta.png", :style => "display:block; font-family:Arial, sans-serif; font-size:14px; line-height:25px; text-align:center; color:#000000; font-weight:bold; max-width:30px;", :width => "30"}/
+      %tr
+        %td{:height => "16", :style => "height:16px; font-size:1px; line-height:1px; height:16px;"}  
+      %tr
+        %td.em_grey{:align => "center", :style => "font-family: Arial, sans-serif; font-size: 15px; line-height: 18px; color:#434343; font-weight:bold;", :valign => "top"} ¿Consultas?
+      %tr
+        %td{:height => "10", :style => "height:10px; font-size:1px; line-height:1px;"}  
+      %tr
+        %td{:align => "center", :style => "font-size:0px; line-height:0px;", :valign => "top"}
+          %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+            %tr
+              %td{:align => "left", :style => "font-size:0px; line-height:0px; width:15px;", :valign => "middle", :width => "15"}
+                %a{:href => "mailto:soporte@alectrico.cl", :style => "text-decoration:none;"}
+                  =image_tag('/img/alectrico_60_40.png', :alt => "", :border => "0", :height => "12", :style => "display:block; max-width:15px;", :width => "15")
+              -#%td.em_w5{:style => "width:9px; font-size:0px; line-height:0px;", :width => "9"}
+                %img{:alt => "", :border => "0", :height => "1", :src => "/assets/pilot/images/templates/spacer.gif", :style => "display:block;", :width => "1"}/
+              %td.em_grey.em_font_11{:align => "left", :style => "font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color:#434343;", :valign => "middle"}
+                %a{:href => "mailto:soporte@alectrico.cl", :style => "text-decoration:none; color:#434343;"} consulta@alectrico.cl
+                %a{:href => "mailto:soporte@alectrico.cl", :style => "text-decoration:none; color:#434343;"} [mailto:consulta@alectrico.cl]
+      %tr
+        -#%td.em_h10{:height => "9", :style => "font-size:0px; line-height:0px; height:9px;"}
+          %img{:alt => "", :border => "0", :height => "1", :src => "/assets/pilot/images/templates/spacer.gif", :style => "display:block;", :width => "1"}/
+      %tr
+        %td{:align => "center", :valign => "top"}
+          %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+            %tr
+              %td{:align => "left", :style => "font-size:0px; line-height:0px; width:12px;", :valign => "middle", :width => "12"}
+                %a{:href => "#", :style => "text-decoration:none;", :target => "_blank"}
+                  =image_tag('/img/alectrico_60_40.png', :alt => "", :border => "0", :height => "16", :style => "display:block; max-width:12px;", :width => "12")
+              %td.em_w5{:style => "width:7px; font-size:0px; line-height:0px;", :width => "7"}  
+              %td.em_grey.em_font_11{:align => "left", :style => "font-family: Arial, sans-serif; font-size: 13px; line-height: 15px; color:#434343;", :valign => "middle"}
+                %a{:href => "#", :style => "text-decoration:none; color:#434343;", :target => "_blank"} alectrico.cl
+                • Desde 2013 • Santiago, RM
+      %tr
+        %td.em_h20{:height => "35", :style => "height:35px;"}  
+%tr
+  -#%td{:bgcolor => "#dadada", :height => "1", :style => "font-size:0px; line-height:0px; height:1px;"}
+    %img{:alt => "", :border => "0", :height => "1", :src => "/assets/pilot/images/templates/spacer.gif", :style => "display:block;", :width => "1"}/
+%tr
+  %td.em_aside10{:align => "center", :style => "padding:0 25px;", :valign => "top"}
+    %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td{:height => "16", :style => "font-size:0px; line-height:0px; height:16px;"}  
+      %tr
+        %td{:align => "center", :valign => "top"}
+          %table.em_wrapper{:align => "left", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+            %tr
+              %td.em_grey{:align => "center", :style => "font-family: Arial, sans-serif; font-size: 11px; line-height: 16px; color:#434343;", :valign => "middle"}
+                -if @user.respond_to?(:suscripcion_token)
+                  Este correo fue enviado desde mailgun.com bajo el amparo legal que corresponde al envío de correspondencia no solicitada. Derecho que está plenamente permitido en Chile pero que debe ejercerse proporcionando un link para que Ud. pueda desenergizar ese servicio. Es el que sigue:
+                  %a{:href => desuscribeme_autorizado_url(@user.desuscripcion_token), :style => "text-decoration:underline; color:#434343;", :target => "_blank"} Clique aquí para dejar de recibir más correos de alectrico.cl.
+        %tr
+        %td{:height => "16", :style => "font-size:0px; line-height:0px; height:16px;"}  
+%tr
+  -#%td.em_hide{:style => "line-height:1px;min-width:650px;background-color:#efefef;"}
+    %img{:alt => "", :border => "0", :height => "1", :src => "/assets/pilot/images/templates/spacer.gif", :style => "max-height:1px; min-height:1px; display:block; width:650px; min-width:650px;", :width => "650"}/

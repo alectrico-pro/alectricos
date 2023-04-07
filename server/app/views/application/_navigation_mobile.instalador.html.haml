@@ -1,0 +1,38 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => 'instalador'}
+
+
+
+-#nav.nav.navbar-toggler.navbar-left.navbar-inverse.bg-inverse.fixed-top
+  = render 'search'
+
+%nav.nav.navbar-toggler.navbar-light.bg-faded.nav-bar-justified.top{:style => "z-index: 150"}
+  -#= "Menu Instalador"
+  -#=link_to image_tag( Rails.configuration.domain['brand_logo']), root_path, class: 'navbar-brand' unless current_user
+
+  -if current_user
+    -#urrent_user.name.truncate(7) unless current_user.usuario and current_user.usuario.login == "cliente"
+    -#current_user.name if current_user.usuario and current_user.usuario and current_user.usuario.login
+    -if current_user.auditor
+      -#.nav-item
+        %a.nav-link{:href => '#'}
+          %span.glyphicon.glyphicon
+      .nav-item
+        %a.nav-link{:href => gestion_evidencias_path}
+          %span.glyphicon.glyphicon-camera
+      .nav-item
+        %a.nav-link{:href => gestion_auditorias_path}
+          %span.glyphicon.glyphicon-check
+      .nav-item
+        %a.nav-link{:href => electrico_checklists_path}
+          %span.glyphicon.glyphicon-euro
+    -#.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-home"></span>'.html_safe, user_path(current_user.id))
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-plus-sign"></span>'.html_safe, new_electrico_presupuesto_path)
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span>'.html_safe, electrico_presupuestos_path)
+    -#.nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"></span>'.html_safe, destroy_user_session_path, method: 'delete')
+  -##if current_user
+    = render 'search'
+
+

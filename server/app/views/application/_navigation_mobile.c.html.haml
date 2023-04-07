@@ -1,0 +1,46 @@
+%navbar.navbar.navbar-fixed-bottom
+
+
+
+-#av.nav.navbar-toggler.navbar-light.bg-faded.nav-bar-justified.fixed-top
+  -#ink_to image_tag( Rails.configuration.domain['brand_logo']), root_path, class: 'navbar-brand' unless current_user
+  =render 'search'
+  -#av-item.nav-link= link_to('<span class="glyphicon glyphicon-home"></span>'.html_safe, user_path(current_user.id))
+  -#av-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span>'.html_safe, electrico_presupuestos_path)
+  .nav-item.nav-link=link_to('<span class="glyphicon glyphicon-plus-sign"></span>'.html_safe, new_electrico_presupuesto_path) if current_user.instalador?
+
+  -#  %button.navbar-toggler.navbar-toggler-center{"data-target" => "#trabajando", "data-toggle" => "collapse", :type => "button"}
+    -if @trabajando
+      %span.badge.badge-neutral #{@trabajando.count}
+  -#utton.navbar-toggler.navbar-toggler-left{"data-target" => "#sin_pagar", "data-toggle" => "collapse", :type => "button"}
+    .nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"></span>'.html_safe, destroy_user_session_path, method: 'delete',:id => 'cerrar_sesion')
+  -#= render 'search'
+
+  -#%button.navbar-toggler.navbar-toggler-right{"data-target" => "#porvisitar", "data-toggle" => "collapse", :type => "button"}
+    -#if @pagados
+      %span.badge.badge-success #{@pagados.count}
+    -#if @no_pagados
+      %span.badge.badge-danger #{@no_pagados.count}
+    -#if @realizados
+      %span.badge.badge-info #{@realizados.count}
+    -if @porvisitar
+      %span.badge.badge-primary #{@porvisitar.count}
+    -#if @porllamar
+      %span.badge.badge-primary #{@porllamar.count}
+    %div.collapse.navbawr-collapse#porvisitar
+      -if @porvisitar and @porvisitar.any?
+        %ul.navbar-nav.mar-auto.mt-2.mt-lg-0
+          -@porvisitar.each do |v|
+            %li.nav-item
+              %a.nav-link{:href => edit_electrico_presupuesto_path(v.id)}=v.usuario.nombre.truncate(10) + " | " + v.descripcion.truncate(10) 
+
+
+  -#%nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"></span>'.html_safe, destroy_user_session_path, method: 'delete',:id => 'cerrar_sesion')
+  -#=render 'search'
+-#%nav.navbar.navbar-dark.bg-dark
+  %div{:id => "cable"}
+  %span.badge.badge-secondary
+    %article{"data-user-id" => "#{current_user.id}"}
+      %section{:id => "mi_coleccion","data-channel" => "mi_coleccion", "data-message-id" => "#{CANAL_PRESUPUESTOS_ID}"}
+
+

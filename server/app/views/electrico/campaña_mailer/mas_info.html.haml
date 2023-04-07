@@ -1,0 +1,28 @@
+-content_for :logo   do
+  = image_tag('/img/LocoConduit.png', :class => "img.em_w150" , :alt => "logo alectrico", :border => "0", :height => "41", :style => "display:block; font-family:Arial, sans-serif; font-size:18px; line-height:25px; text-align:center; color:#1d4685; font-weight:bold; max-width:208px;", :width => "28")
+
+-content_for :hero_imagen do
+  %td{:align => "center", :valign => "top"}
+    = image_tag('/img/rosco_esteban.png', :alt => "Un Cliente de Aléctrico Requiere Sus Servicios", :border => "0", :height => "auto", :style => "display:block; max-width:480px; font-family:Arial, sans-serif; font-size:17px; line-height:20px; color:#000000; font-weight:bold;", :width => "480")
+
+-content_for :nombre_informe do
+  %td.em_blue.em_font_22{:align => "center", :style => "font-family: Arial, sans-serif; font-size: 26px; line-height: 29px; color:#264780; font-weight:bold;", :valign => "top"}
+    = "Más Información"
+
+-content_for :call_to_action do
+  %td.em_white{:align => "center", :height => "42", :style => "font-family: Arial, sans-serif; font-size: 16px; color:#ffffff; font-weight:bold; height:42px;", :valign => "middle"}
+    %a{:href => "https://shop.alectrico.cl/recarga", :style => "text-decoration:none; color:#ffffff; line-height:42px; display:block;", :target => "_blank"} Ir a Recargar
+
+-content_for :terminos do
+  = Fatty::Formatter::Masinfo.render(:text) 
+
+Hola #{@user.nombre}, Ud. ha solicitado más información sobre alectrico.cl y estamos encantados de dársela a conocer. 
+
+alectrico.cl, es una aplicación web que le permitirá atender a personas en sus domicilios, en su papel de Instalador Eléctrico Autorizado SEC.
+
+Como Ud. comprenderá, atender a alguien en su propia casa es un asunto muy delicado y por eso es que lo hemos invitado a Ud. porque sabe hacer trabajos eléctricos que no representan riesgos a las personas ni a la propiedad.
+
+Estamos dispuestos a confiar en Ud. pero igual comprobaremos su trabajo las veces que nos parezca. Y hacemos esto para proteger a las personas, además de lo que Ud. también haga para protegerlas.
+
+Alexander Espinosa
+CEO alectrico.cl

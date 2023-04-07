@@ -1,0 +1,21 @@
+test: &default
+  cliente_id: "275304" 
+  cliente_key: "0e76a667aa998da59c252b563c96ea06f9f66004" 
+
+sandbox:
+  <<: *default
+development:
+  <<: *default
+ci:
+  <<: *default
+production:
+  <<: *default
+
+electrico_heroku:
+  cliente_id: <%= ENV['KHIPU_CLIENTE_ID'] %>
+  cliente_key: <%= ENV['KHIPU_CLIENTE_KEY'] %>
+alectrico_heroku:
+  cliente_id: <%= ENV['KHIPU_CLIENTE_ID'] %>
+  cliente_key: <%= ENV['KHIPU_CLIENTE_KEY'] %>
+
+

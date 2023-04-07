@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Transacción Desuscripción
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag  'braintree/application', media: 'all', 'data-turbolinks-track' => true
+    -#favicon_link_tag "favicon.png"
+    = render 'favicon'
+    = csrf_meta_tags
+  %body{"data-no-turbolink" => ""}
+    %header.main
+      .container.wide
+        .content.slim
+          .set
+            .fill
+              %a.pseudoshop{:href => "/"}
+                Transacción de
+                %strong Desuscripción
+            .fit
+              %a.braintree{:href => "https://developers.braintreepayments.com/guides/drop-in", :target => "_blank"} Aléctrico
+      -#= render partial: "notifications"
+    = yield

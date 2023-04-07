@@ -1,0 +1,10 @@
+<% @namespace = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %><%end%><%end%>
+<% @var = capture do %>@<%=@namespace%>_<%=plural_name.singularize%><%end%>
+<% @constante = capture do %><%=class_name %><%end%>
+<% @value = capture do %><%=@namespace%>_<%=plural_name.singularize%><%end%>
+<% @values_slash = capture do %><%=@namespace%>/<%=plural_name%><%end%>
+<% @vars = capture do %>@<%=@namespace%>_<%=plural_name%><%end%>
+
+.row
+  = render partial: '<%=@values_slash%>/item',collection: <%=@vars%>,:layout => 'jumbotron',:cached => true, :locals => {:item => <%=@var%>},:renderer => BootstrapPagination::Rails
+

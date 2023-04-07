@@ -1,0 +1,11 @@
+<% @namespace = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %><%end%><%end%>
+<% @var = capture do %>@<%=@namespace%><%=plural_name.singularize%><%end%>
+<% @constante = capture do %><%=class_name %><%end%>
+<% @value = capture do %><%=@namespace%><%=plural_name.singularize%><%end%>
+<% @vars = capture do %>@<%=@namespace%><%=plural_name%><%end%>
+
+- content_for :jumbo_contenido do
+  #menu= render 'main_menu'
+  %h1 Agregando <%=@constante%>
+  = render 'form', <%=@value%>:<%=@var%>
+  = link_to 'Lista', <%= @value.pluralize %>_path

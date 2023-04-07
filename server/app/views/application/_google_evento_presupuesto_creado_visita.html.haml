@@ -1,0 +1,5 @@
+-if Rails.configuration.domain['propiedad_google_analytics'] and request.remote_ip != Rails.configuration.domain['mi_ip']
+
+  :javascript
+    ga('send', 'event', 'presupuesto', 'etapa', 'visita',2);
+

@@ -1,0 +1,39 @@
+<% @namespace = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %><%end%><%end%>
+<% @var = capture do %>@<%=@namespace_%><%=plural_name.singularize%><%end%>
+<% @constante = capture do %><%=class_name %><%end%>
+<% @value = capture do %><%=@namespace_%><%=plural_name.singularize%><%end%>
+<% @vars = capture do %>@<%=@namespace_%><%=plural_name%><%end%>
+
+-if item.id
+  .col-12.col-xs-12.col-sm-6.col-md-4.col-lg-3{:id => item.id}
+    .portfolio-item
+      = link_to('<span class="glyphicon glyphicon-camera"></span> '.html_safe, "#{@value}_path(item))"
+      .portfolio-imagen
+        =link_to(image_tag("code_image_#{@value}_path(item)", :style => "max-width: 100%"), item) if item.bits
+                                                          
+        .ribbon-wrapper
+          .price-ribbon
+            = render partial:  "'shared/badge_#{@value}'",:locals => {:item => item}
+        %hr
+        -#ender partial: 'shared/avatar', :locals => {:item => item.usuario} if (current_user.admin or current_user.ingeniero) and item.usuario
+        %br
+          %table.table.table-striped
+            %thead
+              %tr
+                <%@attributes.each do |a| %>%th <%=a.name.humanize %>
+                <%end%>%th
+                %th
+                %th
+
+            %tbody
+              -@<%=@namespace_%><%=plural_name %>.each do |<%=plural_name.singularize%>|
+                %tr
+                  <%@attributes.each do |a| %>%td=<%=plural_name.singularize %>.<%=a.name %>
+                  <%end%>%td= link_to "Ver", <%=plural_name.singularize%>
+                  %td= link_to "Editar", edit_<%= @namespace_ %><%=plural_name.singularize%>_path(<%=plural_name.singularize%>)
+          .portfolio-info
+          %ul
+            %li.portfolio-project-name
+              -#= link_to(item.id.registro.razon_social.truncate(20), gestion_registro_path(item.auditoria.registro.id)) if item.id
+
+

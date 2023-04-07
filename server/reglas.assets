@@ -1,0 +1,11 @@
+1. Los assets deben estar listos antes de enviarlos a production porque heroku no acepta archivos en sus sistema ephemeral. Los borra.
+2. Para que estén disponibles deben compilarse antes en modo local, lo que se conoce como assets:precompiling. Este proceso puede generar muchas copias de assets, y eso no me está funcionando bien. Resulta que en prodution el manifiesto apunta a un conjunto con un digest inexistente. Lo que es lo mismo que decir que el manifest se quedó retrasado con respecto a la nueva generación.
+3. Antes de llamar a assets:precompile hay que ir a public y borrar assets y packs, para que el nuevo conjunto sea el único. De esa forma me ahorro memoria de disco en el slug de heroku.
+4. Los assets se usan ahora como un solo pack que es manejado por webpacker. Es necesario ir a app/javascripts/packs para ver los assets que sirve el webpacker y que luego son metidos en un solo pack el que debe tene un link en el application.html.haml layout. 
+5. Lo que estoy incluyendo en el pack es bootstrap 4.3 completo, pero puede personalizarse quitando los que no se quiera usar en boostrap_custom. Ese archivo tiene una variante sccs que está en la carpeta javascripts para los css y una variante js que está en la carpeta packs para los .js. 
+6. Para terminar la configuración del pack. Debe haber un archivo application con su variante js y scss que refiera al archivo bootstrap_custom. Esto es como una cadena de referencias que termian en el nombre del pack. Esto es, se generará un solo arhivo application con sabores js y css que deberá tener un link desde el layout html.
+
+7. Los assets a la antigua no los uso, pero es bueno saber que los archivos y directorios que estén en el directorio app/assets ya van considerados en el pack. No escriba nada en el config porque entonces se precompilarán dos conjuntos de assets.
+
+8. La estrategia para hacer las cosas es dejar los assets globales en app/assets y los que sean diferentes por controlador, referirlos en un archivo contralador.scss que debe estar en assets.
+

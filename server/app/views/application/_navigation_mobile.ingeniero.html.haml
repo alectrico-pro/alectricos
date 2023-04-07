@@ -1,0 +1,17 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => 'ingeniero'}
+
+
+
+%nav.navbar.navbar-toggleable-xl.top.bg-light.navbar-light.top{:style => "background-color: #e3f2fd; z-index: 150"} 
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-bookmark"></span> <span class= hidden-sm-down> Atenciones </span>'.html_safe,atenciones_path,:id => 'atenciones')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-th"></span><sṕan class= hidden-sm-down> Tipo de Auditorías </span>'.html_safe,tipo_auditorias_path,:id => 'tipo_auditorias')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span><span class= hidden-sm-down> Presupuestos </span>'.html_safe,  electrico_presupuestos_path,:id => 'footer_presupuestos')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"></span> <span class= hidden-sm-down> Criterios </span> '.html_safe, gestion_criterios_path,:id => 'footer_criterios')
+
+
+  -#.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span> <span class=hidden-sm-down> Presupuestos </span>'.html_safe,  electrico_presupuestos_path,:id => 'presupuestos')
+  -#iniciar_sesion.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-log-in"></span> <span class=hidden-sm-down> Iniciar sesión </span>'.html_safe, new_user_session_path,:id => 'iniciar_sesion')
+  -#registrarse.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-edit"></span> <span class=hidden-sm-down>Registro</span>'.html_safe, new_user_registration_path,:id => 'registrarse')

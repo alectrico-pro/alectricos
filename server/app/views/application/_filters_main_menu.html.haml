@@ -1,0 +1,17 @@
+%li.nav-item
+  -if @table_format == 'resumen'
+    %a.nav-link.active{:href => '#'}
+      Resumen
+      %span.sr-only (current)
+  -else
+    %a.nav-link{:href => electrico_presupuestos_path && "?table_format=resumen&&colaborador_id=#{@colaborador_id}"}
+      Resumen
+%li.nav-item
+  -if @table_format == 'fichas'
+    %a.nav-link.active{:href => '#'}
+      Fichas
+      %span.sr-only (current)
+  -else
+    %a.nav-link{:href => electrico_presupuestos_path && "?table_format=fichas&&colaborador_id=#{@colaborador_id}"}
+      Fichas
+

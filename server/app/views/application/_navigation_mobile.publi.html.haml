@@ -1,0 +1,32 @@
+-content_for(:meta)
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => 'mobi'}
+
+
+%section
+  %nav.nav.navbar-expand.navbar-inverse.bg-primary.beta-menu.navbar-dropdown.align-items-center.navbar-fixed-top.navbar-toggleable-sm{:style => "z-index: 150"}
+
+    %button.navbar-toggler.navbar-toggler-right{:type => "button", "data-toggle" => "collapse", "data-target" => "#navbarSupportedContent" }
+      %span.navbar-toggle-icon
+    .navbar-brand
+      .d-inline-block.align-top
+        =link_to image_tag( Rails.configuration.domain['jumbotron_heading'],:style => "height: 2.8rem"), "#top", class: 'd-inline-bloc align-top' ,:alt => "Instalador Autorizado",:title => "Instalador Autorizado", "media-simple" => "true"
+    .collapse.navbar-collapse#navbarSupportedContent
+      %ul.navbar-nav.nav-dropdown{"data-app-modern-menu" => "true"}
+        .nav-item
+          %a.nav-link.link.text-white{:href => "http://www.alectrico.com"}
+            %span.glyphicon.glyphicon-home{:style => "color: rgb(255,255,255);"}
+              PRINCIPAL&nbsp;
+        .nav-item
+          %a.nav-link.link.text-white{:href => new_user_session_path}
+            %span.glyphicon.glyphicon-log-in{:stytle => "color: rgb(255,255,255);"}
+              LOGIN&nbsp;
+        .nav-item
+          %a.nav-link.link.text-white{:href => new_user_registration_path}
+            %span.glyphicon.glyphicon-edit{:style => "color: rgb(255,255,255);"}
+              REGISTRO&nbsp;
+    
+
+      .navbar-buttons.mbr-section-btn
+        %a.btn.btn-sm.btn-black.display-4{:href => "tel: +56962000921"}

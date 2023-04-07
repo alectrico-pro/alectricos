@@ -1,0 +1,12 @@
+Descripción:
+    Item
+    Genera un partial de item  para las vistas de tipo show y edit
+    Se debe usar para los controladores y vistas que han sido arreglados para ello,
+    debe debe usarse el layout uno.html.haml 
+    Para que funcione debe generarse el controlador con scaffold en que está por defecto y que puede adpatarse a su conveniencia modificando el código en lib/template/rails/scaffold_controller/controller.rb
+
+Example:
+    rails generate item gestion/clase
+
+    Este generador creará
+        app/views/gestion/clase/panel.html.haml

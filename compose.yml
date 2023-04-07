@@ -1,0 +1,240 @@
+#https://semaphoreci.com/community/tutorials/dockerizing-a-ruby-on-rails-application
+
+services:
+  db: &db
+    image: postgres:11-bullseye
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1
+      PGUID: 1000
+      PUID: 1000
+      USER: tio
+      PGUSER: postgres
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_PASSWORD: 1
+      PGUID: 1000
+      PUID: 1000
+      USER: tio
+      PGUSER: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports: 
+      - '5432:5432'
+    expose:
+      - '5432'
+    volumes:
+      - alectrico-postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0
+    ports:
+      - '6379:6379'
+    volumes:
+      - alectrico-redis:/var/lib/redis/data
+
+  app: &app
+    build:
+      context: ./server
+    volumes:
+      - ./server:/opt/app
+    links:
+      - db
+      - redis
+    tmpfs:
+      - /tmp
+      - /app/tmp/pids
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
+
+
+  dev: &dev
+    <<: *app
+    environment:
+      RAILS_ENV: development
+      HOST_URL: db
+      USER_DATA: postgres
+      USER_PASS: 1
+      PASSWORD: 1
+    depends_on:
+      db: {"condition":"service_healthy"}
+      #ommand: ["bundle", "exec", "rake db:test:prepare"  ]
+
+    command: rails s -b localhost -p 3000
+
+
+  prepare: &prepare
+    <<: *app
+    volumes:
+      - ./server:/opt/app
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: development
+    depends_on:
+      db: {"condition":"service_healthy"}
+    command: ["bundle", "exec", "rake db:test:prepare"  ]
+
+
+  prod: &prod
+    <<: *app
+    environment:
+      RAILS_ENV: production
+      HOST_URL: db
+      USER_DATA: postgres
+      USER_PASS: 1
+      PASSWORD: 1
+    depends_on:
+      db: {"condition":"service_healthy"}
+      #ommand: ["bundle", "exec", "rake db:test:prepare"  ]
+    command: rails s -b localhost -p 3000
+
+
+
+  rake:
+    build:
+      context: ./server
+    volumes:
+      - ./server:/opt/app
+    links:
+      - postgres
+      - redis
+    tmpfs:
+      - /tmp
+      - /app/tmp/pids
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: test
+    command: 
+      - bundle
+      - exec
+      - rake
+      - graph:get_conversacion
+        # graph:simple
+        # graph:sin_conversacion
+        # graph:otro
+        # graph:simple
+        # graph:status
+
+
+  test: &test
+    <<: *app
+    container_name: alectrico
+    build:
+      context: ./server
+    volumes:
+      - ./server:/opt/app
+    links:
+      - postgres
+      - redis
+    tmpfs:
+      - /tmp
+      - /app/tmp/pids
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: test
+    command: rspec
+
+
+
+  assets:
+    build:
+      context: ./server
+    volumes:
+      - ./server:/opt/app
+    links:
+      - postgres
+      - redis
+    tmpfs:
+      - /tmp
+      - /app/tmp/pids
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: development
+    command: "rails assets:precompile RAILS_ENV=production"
+
+
+  sidekiq:
+    build:
+      context: .
+    command: bundle exec sidekiq 
+    links:
+      - postgres
+      - redis
+    env_file:
+      - .env
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx.Dockerfile
+    links:
+      - alectrico
+    ports:
+      - '8020:8020'
+
+
+  web:
+    build: ./server
+    image: rails-on-docker:1.5.0
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    environment:
+      - DATABASE_URL=postgres://postgres:1@db
+      - BOOTSNAP_CACHE_DIR=/usr/local/bundle/_bootsnap
+      - WEB_CONCURRENCY=1
+      - HISTFILE=/usr/src/app/.dockerdev/.bash_history
+      - MALLOC_ARENA_MAX=2
+    volumes:
+      - .:/usr/src/app/:cached
+      - bundle:/usr/local/bundle
+      - rails_cache:/usr/src/app/tmp/cache
+      - node_modules:/usr/src/app/node_modules
+    depends_on:
+      - db
+
+  webpack:
+    build: ./server
+    image: rails-on-docker:1.5.0
+    command: yarn build --watch
+    volumes:
+      - .:/usr/src/app:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/usr/src/app/node_modules
+
+
+volumes:
+  alectrico-postgres:
+  alectrico-redis:
+  bundle:
+  node_modules:
+  rails_cache:
+
+

@@ -1,0 +1,11 @@
+-if signed_in?
+  %ul.navbar-nav.mr-auto
+    %li.nav-item.dropdown
+      %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} #{current_user.email}
+      .dropdown-menu{"aria-labelledby" => "dropdown01"}
+        .dropdown-item=link_to("Cerrar sesión", destroy_user_session_path, method: 'delete')
+        .dropdown-item=link_to("Editar Perfil", edit_user_registration_path(current_user), method: 'get')
+
+-else
+  %li.dropdown-item= link_to "Iniciar sesión", new_user_session_path
+

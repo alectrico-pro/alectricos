@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title="Transacción #{@pasarela}"
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag  'braintree/application', media: 'all', 'data-turbolinks-track' => true
+    -#favicon_link_tag "favicon.png"
+    = render 'favicon'
+    = csrf_meta_tags
+  %body{"data-no-turbolink" => ""}
+    %header.main
+      .container.wide
+        .content.slim
+          .set
+            .fill
+              %a.pseudoshop{:href => "#"}
+                Transacción de compra
+                %strong= "#{@pasarela}"
+            .fit
+              %a.braintree{:href => "#{Rails.configuration.domain['name_https']}#{root_path}", :target => "_blank"} Gancho
+    = yield

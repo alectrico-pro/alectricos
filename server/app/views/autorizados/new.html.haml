@@ -1,0 +1,5 @@
+- content_for :contenido do
+  #menu= render 'main_menu'
+  %h1.small Agregando Autorizado
+  = render 'form', autorizado:@autorizado
+  = link_to 'Lista', autorizados_path

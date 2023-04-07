@@ -1,0 +1,45 @@
+!!!
+%html{:style => "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"}
+  %head
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    :css
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        border: 0 !important;
+        outline: none !important;
+      }
+      p {
+        Margin: 0px !important;
+        Padding: 0px !important;
+      }
+      table {
+        border-collapse: collapse;
+        mso-table-lspace: 0px;
+        mso-table-rspace: 0px;
+      }
+      td, a, span {
+        border-collapse: collapse;
+        mso-line-height-rule: exactly;
+      }
+  %body{:bgcolor => "#f6f6f6", :itemscope => "", :itemtype => "http://schema.org/EmailMessage", :style => "font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; line-height: 1.6em; background-color: #f6f6f6; margin: 0;"}
+    %table.em_full_wrap{:align => "center", :bgcolor => "#efefef", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %tr
+        %td{:align => "center", :valign => "top"}
+          %table.em_main_table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:650px; table-layout:fixed;", :width => "650"}
+            %tr
+              %td.em_aside10{:align => "center", :style => "padding:0 25px;", :valign => "top"}
+                %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                  %tr
+                    %td.em_h20{:height => "26", :style => "height:26px;"}  
+                  %tr
+                    %td{:align => "center", :valign => "top"}
+                      -#{:href => "#", :style => "text-decoration:none;", :target => "_blank"}
+                      = yield :logo if content_for :logo
+                      = render '/layouts/electrico/campaña_mailer/logo' unless content_for :logo
+                  %tr
+                    %td.em_h20{:height => "28", :style => "height:28px;"}  
+    = render '/layouts/electrico/campaña_mailer/informe'

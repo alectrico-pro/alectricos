@@ -1,0 +1,28 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => 'colaborador'}
+
+
+
+-#%nav.navbar.navbar-toggleable-sm.expand-lg.navbar-light.bg-light{:style => "z-index: 150"}
+
+  %a.navbar-brand{:href => "#"} Solicitudes
+  %button.navbar-toggler{"aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarText", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarText.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a.nav-link{:href => user_path(current_user.id)}
+          Home
+          %span.sr-only (current)
+      -if current_user.instalador
+        %li.nav-item
+          %a.nav-link{:href => new_electrico_presupuesto_path} Nuevo
+      %li.nav-item
+        %a.nav-link{:href => electrico_presupuestos_path} Lista
+      -if @presupuesto and @presupuesto.id 
+        %li.nav-item
+          %a.nav-link{:href => edit_electrico_presupuesto_path(@presupuesto)} Ultimo
+      %span.navbar-text
+        alectrico.cl debe aumentar la seguridad eléctrica de las personas

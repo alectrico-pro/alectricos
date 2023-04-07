@@ -1,0 +1,67 @@
+<!doctype html>
+<html amp4email>
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <style amp4email-boilerplate>body{visibility:hidden}</style>
+  <style amp-custom>
+    .container {
+      max-width: 500px;
+      margin: auto;
+      font-family: sans-serif;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .block {
+      display: block;
+      width: 100%;
+    }
+
+    .m1 {
+      margin: 1em 0;
+    }
+
+    label {
+      margin-bottom: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <amp-img class="m1" width="600" height="314" layout="responsive" src=   
+"https://www.alectrico.cl/img/wide-landing-04.jpg" ></amp-img>
+      <p>Santiago de Chile es una ciudad compleja que necesita electricistas.
+    </div>
+
+    <hr>
+
+    <form method="post" action-xhr="https://api.alectrico.cl/comentarios/new">
+      <div class="m1">
+        <p>¿Le gustaría atender como electricista a domicilio en Providencia y Las Condes? </p>
+
+        <input type="radio" id="rating1" name="rating" value="3" on="change:step2.show" required>
+        <label for="rating1">Fantástico</label>
+
+        <input type="radio" id="rating2" name="rating" value="2" on="change:step2.show">
+        <label for="rating2">No es mi área</label>
+
+        <input type="radio" id="rating3" name="rating" value="1" on="change:step2.show">
+        <label for="rating3">No me interesa</label>
+      </div>
+      <div class="m1" id="step2" hidden>
+        <label class="block" for="info">¿Podría comentar un poquito más su respuesta?</label>
+        <textarea class="block" id="info" name="name" rows="5"></textarea>
+      </div>
+      <input type="submit" value="Enviar Respuesta a alectrico.cl">
+      <input type="reset" value="Limpiar">
+
+      <div class="m1" submit-success>
+        ¡Gracias por comentar!
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Procfile
+#web: bundle exec puma -C config/puma.rb
+web:bundle exec rails s -p $PORT
+migrate:bundle exec rails db:migrate
+test:bundle exec rspec

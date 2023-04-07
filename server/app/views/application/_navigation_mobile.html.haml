@@ -1,0 +1,118 @@
+-content_for(:meta) do
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => ''}
+
+
+
+-#nav.nav.navbar-toggler.navbar-left.navbar-inverse.bg-inverse.fixed-top
+  = render 'search'
+
+-#nav.nav.navbar-toggler.navbar-light.bg-faded.nav-bar-justified.fixed-top{:style => "z-index: 150"}
+  -#=link_to image_tag( Rails.configuration.domain['brand_logo']), root_path, class: 'navbar-brand' unless current_user
+
+  -if current_user
+    = current_user.name if current_user
+    -#=current_user.name.truncate(7) unless current_user.usuario and current_user.usuario.login == "cliente"
+    -#current_user.name if current_user.usuario and current_user.usuario and current_user.usuario.login
+    -if current_user.ingeniero
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-bookmark"></span>'.html_safe,atenciones_path,:id => 'atenciones')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-th"></span>'.html_safe, tipo_auditorias_path,:id => 'auditorias')
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span>'.html_safe, electrico_presupuestos_path,:id => 'presupuestos')
+
+      
+
+    -elsif current_user.admin
+      -if user_session["role"] == '1'
+        .nav-item
+          %a.nav-link{:href => gestion_evidencias_path,:id => 'evidencias'}
+            %span.glyphicon.glyphicon-camera
+        .nav-item
+          %a.nav-link{:href => gestion_usuarios_path,:id => 'usuarios'}
+            %span.glyphicon.glyphicon-user
+        .nav-item
+          %a.nav-link{:href => gestion_auditorias_path,:id => 'auditorias'}
+            %span.glyphicon.glyphicon-check
+    
+
+      -else
+        .nav-item
+          %a.nav-link{:href => gestion_registros_path,:id => 'registros'} 
+            %span.glyphicon.glyphicon-education
+        .nav-item
+          %a.nav-link{:href => gestion_usuarios_path,:id => 'usuarios'}
+            %span.glyphicon.glyphicon-user
+        .nav-item
+          %a.nav-link{:href => gestion_auditorias_path,:id => 'auditorias'}
+            %span.glyphicon.glyphicon-check
+              
+        -#.nav-item
+          %a.nav-link{:href => gestion_criterios_path}
+            %span.glyphicon.glyphicon-list
+
+    -elsif current_user.auditor
+      .nav-item
+        %a.nav-link{:href => '#'}
+          %span.glyphicon.glyphicon
+      .nav-item
+        %a.nav-link{:href => gestion_evidencias_path,:id => 'auditorias'}
+          %span.glyphicon.glyphicon-camera
+      .nav-item
+        %a.nav-link{:href => gestion_auditorias_path,:id => 'auditorias'}
+          %span.glyphicon.glyphicon-check
+      .nav-item
+        %a.nav-link{:href => '#'}
+          %span.glyphicon.glyphicon
+
+
+  -else
+    .nav-item
+      %a.nav-link{:href => "#{Rails.configuration.domain['external_home']}",:id => 'external_home'}
+        %span.glyphicon.glyphicon-home
+    .nav-item
+      %a.nav-link{:href => root_path,:id => 'root'}
+        %span.glyphicon.glyphicon-flash
+    -#.nav-item
+      %a.nav-link{:href => contacto_path}
+        %span.glyphicon.glyphicon-phone-alt
+    -#.nav-item
+      %a.nav-link{:href => about_path}
+        %span.glyphicon.glyphicon-info-sign
+    -#.nav-item
+      %a.nav-link{:href => new_evento_path}
+        -#.glyphicon.glyphicon-plus{:style => "font-size: 0.5rem"}
+        %span.glyphicon.glyphicon-map-marker
+
+  -if current_user
+    -if current_user.admin
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list-alt"></span>'.html_safe, electrico_master_checklists_path,:id => 'master_checklists')
+    -else
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-flash"></span>'.html_safe, electrico_presupuestos_path,:id => 'presupuestos')
+
+
+    -#.nav-item
+    -#unless current_user.admin or current_user.ingeniero or current_user.auditor or (current_user.usuario and current_user.usuario.login == 'cliente')
+      %a.nav-link{:href => eventos_path,:id => 'eventos'}
+        %span.glyphicon.glyphicon-map-marker
+    -#av-item
+    -#unless current_user.admin or current_user.ingeniero or current_user.auditor or (current_user.usuario and current_user.usuario.login == 'cliente')
+      %a.nav-link{:href => new_evento_path,:id => 'nuevo_evento'}
+        .glyphicon.glyphicon-plus{:style => "font-size: 0.5rem"}
+        %span.glyphicon.glyphicon-map-marker
+
+    -#av-item
+      %a.nav-link{:href => edit_user_registration_path}
+        %span.glyphicon.glyphicon-cog
+    .nav-item.nav-link=link_to('<span class="glyphicon glyphicon-off"></span>'.html_safe, destroy_user_session_path, method: 'delete',:id => 'cerrar_sesion')
+
+  -else
+    .nav-item
+      %a.nav-link{:href => new_user_session_path,:id => 'iniciar_sesion'}
+        %span.glyphicon.glyphicon-log-in
+    .nav-item
+      %a.nav-link{:href => new_user_registration_path,:id => 'registrarse'}
+        %span.glyphicon.glyphicon-edit
+  -if current_user
+    = render 'search'
+
+

@@ -1,0 +1,85 @@
+= form_for @autorizado do |f|
+  - if @autorizado.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@autorizado.errors.count, "error")} prohibited this autorizado from being saved:"
+      %ul
+        - @autorizado.errors.full_messages.each do |message|
+          %li= message
+  .container.alert.alert-success
+    .field
+      = f.label :rut
+      = f.text_field :rut
+    .field
+      = f.label :nombre
+      = f.text_field :nombre
+    .field
+      = f.label :nombre_completo
+      = f.text_field :nombre_completo
+    .field
+      = f.label :direccion
+      = f.text_field :direccion
+    .field
+      = f.label :comuna
+      = f.text_field :comuna
+    .field
+      = f.label :fono
+      = f.text_field :fono
+
+    %p [:no_ha_sido_telefoneado, :ha_sido_telefoneado, :su_telefono_responde, :este_numero_no_existe, :suena_pero_no_responde :sin_fono :tiene_fono :fono_no_disponible]
+    .field 
+      = f.label :llamadas_telefonicas
+      = f.text_field :llamadas_telefonicas
+
+    %p [:a, :b, :c, :d, :x]
+    .field
+      = f.label :clase
+      = f.text_field :clase
+
+    .field
+      = f.label :email
+      = f.text_field :email
+
+    %p [:no_se_le_ha_enviado_email, :recibe_email, :no_recibe_email, :responde_email, :no_existe_email, :problemas_con_email :sin_email :tiene_email]
+    .field
+      = f.label :envios_de_email
+      = f.text_field :envios_de_email
+
+    %p [:reclutado,  :no_reclutado, :no_activo]
+    .field
+      = f.label :reclutamiento
+      = f.text_field :reclutamiento
+
+    %p [:suscrito,   :no_suscrito]
+    .field
+      = f.label :suscripcion
+      = f.text_field :suscripcion
+
+    %p [:presentada, :no_presentada]
+    .field
+      = f.label :presentacion
+      = f.text_field :presentacion
+
+    %p [:entregada_mas_informacion, :no_entregada_mas_informacion]
+    .field
+      = f.label :pedido_adicional_de_informacion
+      = f.text_field :pedido_adicional_de_informacion
+
+    %p [:interesado, :no_interesado]
+    .field
+      = f.label :interes
+      = f.text_field :interes
+
+    %p  [:presentado, :aun_no_responde, :me_bloqueoh]
+    .field
+      = f.label :wapp
+      = f.text_field :wapp
+ 
+    .row
+      .col-12
+        = f.label :comentario
+        = f.text_area :comentario, :width => "80%", :rows => 10
+
+
+
+    .actions
+      = f.submit 'Guardar'

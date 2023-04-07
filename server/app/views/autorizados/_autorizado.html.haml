@@ -1,0 +1,50 @@
+.col-12
+  .alert.alert-success{:role => "alert"}
+
+    
+    %h2= autorizado.nombre
+    %h5= autorizado.nombre_completo
+
+    -if not autorizado.sin_fono?
+      -fono_bueno = number_to_phone("#{autorizado.fono}", :country_code => 56)
+      %a{:href=>"tel:#{number_to_phone("#{autorizado.fono}", :country_code => 56)}"}=number_to_phone("#{autorizado.fono}", :country_code => 56)
+      =link_to "Hola WhatsApp","https://api.whatsapp.com/send?phone=#{fono_bueno}&text=#{autorizado.nombre}"
+
+    -if not autorizado.sin_email?
+      %h4=autorizado.email
+    %h4= autorizado.clase.to_s.upcase
+    %h5= autorizado.rut
+    %h5= autorizado.comuna
+    %h5= autorizado.direccion
+    %span.badge.badge-info= autorizado.suscripcion
+    %span.badge.badge-warning= autorizado.reclutamiento
+    %span.badge.badge-danger= autorizado.presentacion
+    %span.badge.badge-alert= autorizado.interes
+    %span.badge.badge-primary= autorizado.llamadas_telefonicas
+    %span.badge.badge-danger= autorizado.envios_de_email
+    %span.badge.badge-info= autorizado.wapp
+
+   
+    .row
+      %hr
+      .col-5
+        -if autorizado.email
+          %br
+          = link_to('Enviar Prueba'.html_safe, prueba_autorizado_path(autorizado))
+
+          %br
+          = link_to('Enviar Presentación'.html_safe, enviar_presentacion_autorizado_path(autorizado))
+          %br
+          = link_to('Enviar Más Info'.html_safe, enviar_mas_info_autorizado_path(autorizado ))
+        %br 
+        = link_to('Ver'.html_safe, autorizado_path(autorizado)) 
+        %br
+        = link_to('Editar'.html_safe, edit_autorizado_path(autorizado))
+        %br
+        = link_to('Nuevo'.html_safe, new_autorizado_path)
+
+
+      .col-5
+        %h5 Comentario
+        %h5=autorizado.comentario
+

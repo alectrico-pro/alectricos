@@ -1,0 +1,17 @@
+-content_for(:meta)
+  %meta{:property => "navigation", :content => 'mobile'}
+  %meta{:property => "variant", :content => ''}
+  %meta{:property => "locale", :content => 'profesor'}
+
+
+
+%nav.nav.navbar-toggler.navbar-light.bg-faded.nav-bar-justified.fixed-top{:style => "z-index: 150"}
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-file"></span>'.html_safe, curso_pruebas_path,:id => 'pruebas')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-question-sign"></span>'.html_safe, curso_preguntas_path,:id => 'preguntas')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-adjust"></span>'.html_safe, curso_alternativas_path,:id => 'alternativas')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-book"></span>'.html_safe, curso_temas_path,:id => 'temas')
+  .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-tag"></span>'.html_safe, curso_contenidos_path,:id => 'contenidos')
+
+
+
+

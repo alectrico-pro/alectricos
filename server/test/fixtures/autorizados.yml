@@ -1,0 +1,18 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rut: MyString
+  nombre: MyString
+  direccion: MyString
+  comuna: MyString
+  fono: 987654321
+  clase: a
+  email: a@alectrico.cl
+  interes: MyString
+  reclutamiento: MyString
+  suscripcion: MyString
+  presentacion: MyString
+  pedido_adicional_de_informacion: MyString
+  comentario: MyString
+  desuscripcion_token: MyString
+

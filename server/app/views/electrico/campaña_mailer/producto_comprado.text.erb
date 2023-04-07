@@ -1,0 +1,12 @@
+Estimada(o) <%= @admin.name%>, <%= @payment.payer.payer_info.first_name %> ha comprado lo siguiente:
+
+Orden es: <%= @orden.id%>
+Pago es : <%= @payment.id %>
+ 
+Los productos comprados son:
+
+<%- @payment.transactions.first.item_list.items.each do  |item| %>
+  <%= item.name %>
+  <%= item.price %>
+<%- end %>
+

@@ -200,23 +200,11 @@ services:
 
   web:
     build: ./server
-    image: rails-on-docker:1.5.0
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
-      - "3000:3000"
+      - "3003:3000"
     stdin_open: true
     tty: true
-    environment:
-      - DATABASE_URL=postgres://postgres:1@db
-      - BOOTSNAP_CACHE_DIR=/usr/local/bundle/_bootsnap
-      - WEB_CONCURRENCY=1
-      - HISTFILE=/usr/src/app/.dockerdev/.bash_history
-      - MALLOC_ARENA_MAX=2
-    volumes:
-      - .:/usr/src/app/:cached
-      - bundle:/usr/local/bundle
-      - rails_cache:/usr/src/app/tmp/cache
-      - node_modules:/usr/src/app/node_modules
     depends_on:
       - db
 

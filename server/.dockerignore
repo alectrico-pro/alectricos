@@ -1,0 +1,4 @@
+*.rb.sw*
+.git
+/tmp/*
+/log/*

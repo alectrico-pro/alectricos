@@ -1,6 +1,6 @@
 # Dockerfile development version
-#ROM ruby:3.1.2 AS aelectrico-development
-
+#FROM ruby:3.1.2 
+#ROM ruby:3.2.0
 FROM ruby:3.0.5
 
 # Install yarn

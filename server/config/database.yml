@@ -40,5 +40,5 @@ production:
   timeout: 5000
   username: <%= ENV.fetch("DB_USER") {"postgres"} %>  # e.g. "my-database-user"
   password: <%= ENV.fetch("DB_PASS") {"1"} %> # e.g. "my-database-password"
-  database: <%= ENV.fetch("DB_NAME") {"autorizados"}  %>
+  database: <%= ENV.fetch("DB_NAME") {"alectricos"}  %>
   host:     <%= ENV["INSTANCE_HOST"].present? ? ENV["INSTANCE_HOST"] : (ENV["INSTANCE_UNIX_SOCKET"].present? ? ENV["INSTANCE_UNIX_SOCKET"] : "")  %>

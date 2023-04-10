@@ -1,0 +1,18 @@
+.bundle
+.bashrc
+.gitignore
+.rb.sw*
+.git
+
+/node_modules
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+*.swp
+*.swo
+# Ignore Byebug command history file.
+.byebug_history
+
+

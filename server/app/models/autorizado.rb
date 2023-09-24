@@ -8,7 +8,7 @@ class Autorizado < ApplicationRecord
 
   scope :orden_clase_desc,   ->          { order ("clase DESC" )}
 
-  COMUNAS.each do |c|
+  ::COMUNAS.each do |c|
     scope c, -> { where ("comuna like '#{c.to_s.camelize}'")}
   end  
 
@@ -34,7 +34,7 @@ class Autorizado < ApplicationRecord
 
   def self.get_filtros
    
-   %w(sin_fono no_ha_sido_telefoneado ha_sido_telefoneado su_telefono_responde este_numero_no_existe suena_pero_no_responde fono_no_disponible sin_email no_se_le_ha_enviado_email recibe_email no_recibe_email responde_email no_existe_email problemas_con_email a b c d x entregada_mas_informacion no_entregada_mas_informacion interesado no_interesado reclutado no_reclutado no_activo suscrito no_suscrito presentada no_presentada presentado aun_no_responde me_bloqueoh) + COMUNAS
+   %w(sin_fono no_ha_sido_telefoneado ha_sido_telefoneado su_telefono_responde este_numero_no_existe suena_pero_no_responde fono_no_disponible sin_email no_se_le_ha_enviado_email recibe_email no_recibe_email responde_email no_existe_email problemas_con_email a b c d x entregada_mas_informacion no_entregada_mas_informacion interesado no_interesado reclutado no_reclutado no_activo suscrito no_suscrito presentada no_presentada presentado aun_no_responde me_bloqueoh) + ::COMUNAS
   end
 
   def genera_token(column)

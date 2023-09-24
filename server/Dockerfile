@@ -23,6 +23,15 @@ RUN yarn install
 EXPOSE 8080
 EXPOSE 3000
 
+# Add a script to be executed every time the container starts.
+COPY .dockerdev/entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
+COPY .dockerdev/migrate.sh /usr/bin/
+RUN chmod +x /usr/bin/migrate.sh
+
+
 CMD bin/rails server -b 0.0.0.0 -p 8080
 # Start server
 #MD bundle exec unicorn -c config/unicorn.rb

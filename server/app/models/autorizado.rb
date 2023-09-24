@@ -1,6 +1,5 @@
 class Autorizado < ApplicationRecord
   
-  COMUNAS = Autorizado.order(:comuna).distinct.pluck(:comuna).map{ |c| begin; c.downcase.to_sym; rescue; end } 
 
   before_validation do
     llamadas_telefonicas =      fono ? :no_ha_sido_telefoneado : :sin_fono

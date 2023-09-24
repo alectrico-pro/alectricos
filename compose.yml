@@ -192,8 +192,8 @@ services:
     build:
       context: .
       dockerfile: ./nginx.Dockerfile
-    links:
-      - alectrico
+      #links:
+      #- alectrico
     ports:
       - '8020:8020'
 
